@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 
-// Sticker component - fun doodle style shapes around the title
 function Sticker({ emoji, style }: { emoji: string; style: React.CSSProperties }) {
   return (
     <motion.div
@@ -46,7 +45,7 @@ export default function HeroSection() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-yellow-400/10 rounded-full blur-2xl animate-pulse delay-500" />
       </div>
 
-      {/* Floating stickers around title */}
+      {/* Floating stickers */}
       {stickers.map((s, i) => (
         <Sticker key={i} emoji={s.emoji} style={s.style} />
       ))}
@@ -109,39 +108,43 @@ export default function HeroSection() {
           zIndex: 2,
         }}
       />
-{/* Scroll down indicator */}
-<motion.div
-  initial={{ opacity: 0, y: -10 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 1.5, duration: 0.8 }}
-  style={{
-    position: "absolute",
-    bottom: 32,
-    left: "50%",
-    transform: "translateX(-50%)",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: 8,
-    zIndex: 2,
-  }}
->
-  <span style={{
-    fontFamily: "Caveat, cursive",
-    fontSize: 18,
-    color: "rgba(255,255,255,0.6)",
-    letterSpacing: 1,
-  }}>
-    scroll down
-  </span>
-  <motion.div
-    animate={{ y: [0, 8, 0] }}
-    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-    style={{ color: "rgba(255,255,255,0.5)", fontSize: 22 }}
-  >
-    ↓
-  </motion.div>
-</motion.div>
+
+      {/* Scroll down indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 0.8 }}
+        style={{
+          position: "absolute",
+          bottom: 32,
+          left: "50%",
+          transform: "translateX(-50%)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 8,
+          zIndex: 2,
+        }}
+      >
+        <span
+          style={{
+            fontFamily: "Caveat, cursive",
+            fontSize: 18,
+            color: "rgba(255,255,255,0.6)",
+            letterSpacing: 1,
+          }}
+        >
+          scroll down
+        </span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          style={{ color: "rgba(255,255,255,0.5)", fontSize: 22 }}
+        >
+          ↓
+        </motion.div>
+      </motion.div>
+
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
         @keyframes gradientShift {
