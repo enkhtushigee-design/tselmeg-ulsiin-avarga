@@ -318,10 +318,16 @@ function Cake({ blown }: { blown: boolean }) {
 function BlowStickerEmoji() {
   return (
     <motion.div
-      initial={{ x: -280, opacity: 0, scale: 0.4, rotate: -20 }}
-      animate={{ x: 0, opacity: 1, scale: 1, rotate: -8 }}
+      initial={{ opacity: 0, scale: 0.4 }}
+      animate={{ opacity: 1, scale: 1 }}
       transition={{ type: "spring", stiffness: 180, damping: 16, delay: 0.1 }}
-      style={{ position: "absolute", left: -170, bottom: 80, zIndex: 20 }}
+      style={{
+        position: "absolute",
+        top: -90,        // ← cake-ийн дээр
+        left: "50%",
+        transform: "translateX(-50%)",
+        zIndex: 20,
+      }}
     >
       <div style={{
         position: "relative",
@@ -359,7 +365,6 @@ function BlowStickerEmoji() {
     </motion.div>
   );
 }
-
 export default function CandleSection({ candleBlown, onBlow }: Props) {
   return (
     <section style={{ paddingTop: 80, paddingBottom: 80, paddingLeft: 16, paddingRight: 16, position: "relative", display: "flex", flexDirection: "column", alignItems: "center" }}>
