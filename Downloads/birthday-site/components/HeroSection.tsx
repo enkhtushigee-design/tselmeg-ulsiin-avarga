@@ -109,7 +109,39 @@ export default function HeroSection() {
           zIndex: 2,
         }}
       />
-
+{/* Scroll down indicator */}
+<motion.div
+  initial={{ opacity: 0, y: -10 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 1.5, duration: 0.8 }}
+  style={{
+    position: "absolute",
+    bottom: 32,
+    left: "50%",
+    transform: "translateX(-50%)",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: 8,
+    zIndex: 2,
+  }}
+>
+  <span style={{
+    fontFamily: "Caveat, cursive",
+    fontSize: 18,
+    color: "rgba(255,255,255,0.6)",
+    letterSpacing: 1,
+  }}>
+    scroll down
+  </span>
+  <motion.div
+    animate={{ y: [0, 8, 0] }}
+    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+    style={{ color: "rgba(255,255,255,0.5)", fontSize: 22 }}
+  >
+    ↓
+  </motion.div>
+</motion.div>
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
         @keyframes gradientShift {
